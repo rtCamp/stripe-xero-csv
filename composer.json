@@ -1,7 +1,11 @@
 {
     "name": "rtcamp/stripe-xero-csv",
     "description": "Export Stripe's balance affecting transactions in a CSV file, recognisable by Xero Import CSV Statement feature.",
-    "keywords": ["stripe", "xero","csv"],
+    "keywords": [
+        "stripe",
+        "xero",
+        "csv"
+    ],
     "license": "MIT",
     "type": "project",
     "authors": [
@@ -19,5 +23,8 @@
         "post-root-package-install": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ]
+    },
+    "config": {
+        "preferred-install": "dist"
     }
 }
