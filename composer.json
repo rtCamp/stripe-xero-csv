@@ -1,0 +1,23 @@
+{
+    "name": "rtCamp/stripe-xero-csv",
+    "description": "Stripe transactions export in a CSV format recognisable by Xero Import CSV Statement feature.",
+    "keywords": ["stripe", "xero","csv"],
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Rahul Bansal",
+            "email": "rahul.bansal@rtcamp.com"
+        }
+    ],
+    "require": {
+        "stripe/stripe-php": "^5.1",
+        "league/csv": "^8.0",
+        "vlucas/phpdotenv": "^2.4"
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
+    }
+}
