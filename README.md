@@ -13,8 +13,8 @@ Currently it supports:
 Preparation
 
 ```
-git clone something
-cd something
+git clone https://github.com/rtcamp/stripe-xero-csv
+cd stripe-xero-csv
 composer install
 ```
 
@@ -35,4 +35,6 @@ Xero will skip duplicates during import so you need to worry about previously im
 - [ ] Add support to generate CSV for a specific duration. Something like _"this month"_, _"last month"_ should be enough to start with.
 
 
+## LICENSE
 
+[MIT](https://opensource.org/licenses/mit-license.php)

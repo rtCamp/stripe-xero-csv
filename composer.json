@@ -1,6 +1,6 @@
 {
-    "name": "rtCamp/stripe-xero-csv",
-    "description": "Stripe transactions export in a CSV format recognisable by Xero Import CSV Statement feature.",
+    "name": "rtcamp/stripe-xero-csv",
+    "description": "Export Stripe's balance affecting transactions in a CSV file, recognisable by Xero Import CSV Statement feature.",
     "keywords": ["stripe", "xero","csv"],
     "license": "MIT",
     "type": "project",
