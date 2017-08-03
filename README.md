@@ -30,10 +30,16 @@ It will create a file `stripe-xero-{date}.csv` with all balance affecting transa
 
 Xero will skip duplicates during import so you need to worry about previously imported transactions appearing in CSV. 
 
+## Known Issues and Limitations
+
+1. [Xero doesn't provide support for adding Stripe as a bank account](https://community.xero.com/business/discussion/2014947/). So we need to create a normal bank account with manual feed. 
+2. Stripe doesn't provide Xero friendly statements. [Xero supports many formats](https://help.xero.com/int/BankAccounts_Details_ImportTrans).
+3. Xero API doesn't have provision to insert bank statement lines. It's second most popular [feature request](https://xero.uservoice.com/forums/5528-xero-accounting-api/suggestions/340274-import-bank-statement-lines-via-the-api) pending from eternity i.e. 2009! This is main reason that you need to run this script locally and import CSV files manually. 
+
+
 ## TODO
 
 - [ ] Add support to generate CSV for a specific duration. Something like _"this month"_, _"last month"_ should be enough to start with.
-
 
 ## LICENSE
 
