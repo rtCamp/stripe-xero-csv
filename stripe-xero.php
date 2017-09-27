@@ -126,7 +126,7 @@ foreach ($transactions->autoPagingIterator() as $transaction) {
             $row[] = $tx_date;
 
             //csv-amount
-            $row[] = $transaction->fee / 100;
+            $row[] = -1 * $transaction->fee / 100;
 
             //csv-Payee
             $row[] = 'Stripe';
