@@ -13,7 +13,7 @@ Currently it supports:
 Preparation
 
 ```
-git clone https://github.com/rtcamp/stripe-xero-csv
+git clone https://github.com/SCGlobal/stripe-xero-csv
 cd stripe-xero-csv
 composer install
 ```
@@ -26,7 +26,7 @@ Finally run the script:
 php stripe-xero.php
 ```
 
-It will create a file `stripe-xero-{date}.csv` with all balance affecting transactions from your Stripe account.
+It will create a file `stripe-xero-{date}.csv` inside the `statements` folder with all balance affecting transactions from your Stripe account.
 
 Xero will skip duplicates during import so you need to worry about previously imported transactions appearing in CSV. 
 
