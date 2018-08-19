@@ -3,3 +3,4 @@
 *.csv
 .idea
 vendor/
+statements/*.csv

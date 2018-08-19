@@ -40,7 +40,7 @@ echo "Fetching all Stripe customers... \n";
 
 $customer_email = array();
 
-$customers = \Stripe\Customer::all(array( "limit" => 100 ));
+$customers = \Stripe\Customer::all(array( "limit" => 100, "created" => ["gte" => strtotime(getenv('STRIPE_FROM_DATE'))] ));
 
 foreach ($customers->autoPagingIterator() as $customer) {
     $customer_email [ $customer->id ] = $customer->email;
@@ -53,7 +53,7 @@ echo "Fetching all Stripe charges... \n";
 
 $charge_email = array();
 
-$charges = \Stripe\Charge::all(array( "limit" => 100 ));
+$charges = \Stripe\Charge::all(array( "limit" => 100, "created" => ["gte" => strtotime(getenv('STRIPE_FROM_DATE'))] ));
 
 foreach ($charges->autoPagingIterator() as $charge) {
     $charge_email[ $charge->id ] = $customer_email[ $charge->customer ];
@@ -66,7 +66,7 @@ echo "Fetching all Stripe refunds... \n";
 
 $refund_email = array();
 
-$refunds = \Stripe\Refund::all(array( "limit" => 100 ));
+$refunds = \Stripe\Refund::all(array( "limit" => 100, "created" => ["gte" => strtotime(getenv('STRIPE_FROM_DATE'))] ));
 
 foreach ($refunds->autoPagingIterator() as $refund) {
     $refund_email [ $refund->id ] = $charge_email[ $refund->charge ];
@@ -79,7 +79,7 @@ $txn_date = new DateTime();
 echo "Fetching all Stripe balance affecting transactions... \n";
 
 //Get Stripe balance affecting transactions
-$transactions = \Stripe\BalanceTransaction::all(array( "limit" => 100 ));
+$transactions = \Stripe\BalanceTransaction::all(array( "limit" => 100, "created" => ["gte" => strtotime(getenv('STRIPE_FROM_DATE'))] ));
 
 foreach ($transactions->autoPagingIterator() as $transaction) {
     $row = array();
@@ -149,4 +149,4 @@ foreach ($transactions->autoPagingIterator() as $transaction) {
 
 echo $csv; //returns the CSV document as a string
 
-file_put_contents("stripe-xero-" . ( new DateTime() )->format('d-M-Y-h-i-a') . ".csv", $csv);
+file_put_contents("statements/stripe-xero-" . ( new DateTime() )->format('d-M-Y-h-i-a') . ".csv", $csv);
