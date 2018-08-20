@@ -13,7 +13,7 @@ Currently it supports:
 Preparation
 
 ```
-git clone https://github.com/SCGlobal/stripe-xero-csv
+git clone https://github.com/rtcamp/stripe-xero-csv
 cd stripe-xero-csv
 composer install
 ```
