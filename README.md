@@ -26,7 +26,7 @@ Finally run the script:
 php stripe-xero.php
 ```
 
-It will create a file `stripe-xero-{date}.csv` with all balance affecting transactions from your Stripe account.
+It will create a file `stripe-xero-{date}.csv` inside the `statements` folder with all balance affecting transactions from your Stripe account.
 
 Xero will skip duplicates during import so you need to worry about previously imported transactions appearing in CSV. 
 
