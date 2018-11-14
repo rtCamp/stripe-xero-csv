@@ -10,7 +10,6 @@ use League\Csv\Writer;
 $dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
 
-//TODO :: move api key to dotenv
 \Stripe\Stripe::setApiKey(getenv('STRIPE_API_KEY'));
 
 $timezone = getenv('STRIPE_TIMEZONE');
@@ -102,6 +101,9 @@ foreach ($transactions->autoPagingIterator() as $transaction) {
         case 'payout':
             $row[] = 'Stripe';
             break;
+        case 'adjustment':
+            $row[] = 'Customer';
+            break;
         default:
             echo "TODO :: unknown transaction of type $transaction->type encountered \n";
             var_dump($transaction->__toArray(true));
@@ -149,4 +151,29 @@ foreach ($transactions->autoPagingIterator() as $transaction) {
 
 echo $csv; //returns the CSV document as a string
 
-file_put_contents("stripe-xero-" . ( new DateTime() )->format('d-M-Y-h-i-a') . ".csv", $csv);
+$csv_filename = "stripe-xero-" . ( new DateTime() )->format('d-M-Y-h-i-a') . ".csv";
+
+if (getenv('CREATE_FILE')) {
+    echo "\nStoring CSV file as " .  $csv_filename ;
+    file_put_contents($csv_filename, $csv);
+}
+
+
+if (getenv('EMAIL_FROM') && getenv('EMAIL_TO') && getenv('AWS_ACCESS_KEY') && getenv('AWS_SECRET_KEY')) {
+    echo "\nEmailing CSV file";
+
+    $m = new SimpleEmailServiceMessage();
+    $m->addTo(getenv('EMAIL_TO'));
+    $m->setFrom(getenv('EMAIL_FROM'));
+    $m->setSubject($csv_filename);
+    $m->setMessageFromString('PFA Stripe Xero CSV');
+
+    $m->addAttachmentFromData($csv_filename, $csv, 'text/csv');
+
+    $ses = new SimpleEmailService(getenv('AWS_ACCESS_KEY'), getenv('AWS_SECRET_KEY'));
+
+    print_r($ses->sendEmail($m));
+}
+
+echo "<finish>";
+exit(0);

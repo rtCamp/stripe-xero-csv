@@ -5,7 +5,7 @@ The php script `stripe-xero.php` exports all Stripe balance affecting transactio
 Currently it supports:
 
 1. Charges
-2. Refunds 
+2. Refunds
 3. Payouts
 
 ## Usage
@@ -28,13 +28,32 @@ php stripe-xero.php
 
 It will create a file `stripe-xero-{date}.csv` with all balance affecting transactions from your Stripe account.
 
-Xero will skip duplicates during import so you need to worry about previously imported transactions appearing in CSV. 
+Xero will skip duplicates during import so you need to worry about previously imported transactions appearing in CSV.
+
+## Email
+
+The script supports emailing CSV as attachment to predefined email address.
+This comes handy if you are running script as a CRON job.
+
+As of now only Amazon AWS SES is supported.
+
+You need to set values of following variables in `.env` file:
+
+- `EMAIL_FROM`
+- `EMAIL_TO`
+- `AWS_ACCESS_KEY`
+- `AWS_SECRET_KEY`
+
+Please make sure:
+
+1. `EMAIL_FROM` address must be verified already in SES console.
+2. You are using IAM API user to generate `AWS_` credentials. SES SMTP credentials won't work.
 
 ## Known Issues and Limitations
 
-1. [Xero doesn't provide support for adding Stripe as a bank account](https://community.xero.com/business/discussion/2014947/). So we need to create a normal bank account with manual feed. 
+1. [Xero doesn't provide support for adding Stripe as a bank account](https://community.xero.com/business/discussion/2014947/). So we need to create a normal bank account with manual feed.
 2. Stripe doesn't provide Xero friendly statements. [Xero supports many formats](https://help.xero.com/int/BankAccounts_Details_ImportTrans).
-3. Xero API doesn't have provision to insert bank statement lines. It's second most popular [feature request](https://xero.uservoice.com/forums/5528-xero-accounting-api/suggestions/340274-import-bank-statement-lines-via-the-api) pending from eternity i.e. 2009! This is main reason that you need to run this script locally and import CSV files manually. 
+3. Xero API doesn't have provision to insert bank statement lines. It's second most popular [feature request](https://xero.uservoice.com/forums/5528-xero-accounting-api/suggestions/340274-import-bank-statement-lines-via-the-api) pending from eternity i.e. 2009! This is main reason that you need to run this script locally and import CSV files manually.
 
 
 ## TODO
