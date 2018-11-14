@@ -49,6 +49,14 @@ Please make sure:
 1. `EMAIL_FROM` address must be verified already in SES console.
 2. You are using IAM API user to generate `AWS_` credentials. SES SMTP credentials won't work.
 
+### crontab
+
+Add a line like below for weekly emails @ Monday 10am.
+
+```
+0 10 * * 1	cd /path/to/stripe-xero-csv && /usr/bin/php stripe-xero.php >> stripe-xero.log 2>&1
+```
+
 ## Known Issues and Limitations
 
 1. [Xero doesn't provide support for adding Stripe as a bank account](https://community.xero.com/business/discussion/2014947/). So we need to create a normal bank account with manual feed.
