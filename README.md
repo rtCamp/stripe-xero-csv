@@ -71,3 +71,7 @@ Add a line like below for weekly emails @ Monday 10am.
 ## LICENSE
 
 [MIT](https://opensource.org/licenses/mit-license.php)
+
+## Does this interest you?
+
+<a href="https://rtcamp.com/"><img src="https://rtcamp.com/wp-content/uploads/2019/04/github-banner@2x.png" alt="Join us at rtCamp, we specialize in providing high performance enterprise WordPress solutions"></a>
