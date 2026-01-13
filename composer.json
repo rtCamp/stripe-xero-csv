@@ -16,7 +16,7 @@
     ],
     "require": {
         "stripe/stripe-php": "^5.1",
-        "league/csv": "^8.0",
+        "league/csv": "^9.28",
         "vlucas/phpdotenv": "^2.4",
         "daniel-zahariev/php-aws-ses": "^0.9.1"
     },
