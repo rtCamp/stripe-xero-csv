@@ -8,21 +8,28 @@
     "packages": [
         {
             "name": "daniel-zahariev/php-aws-ses",
-            "version": "0.9.1",
+            "version": "0.9.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/daniel-zahariev/php-aws-ses.git",
-                "reference": "093c23a2d964937494e199a0f417e64b86128331"
+                "reference": "4584427a358d8bf4aa8c2ce308afadc5f9601ab8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/daniel-zahariev/php-aws-ses/zipball/093c23a2d964937494e199a0f417e64b86128331",
-                "reference": "093c23a2d964937494e199a0f417e64b86128331",
+                "url": "https://api.github.com/repos/daniel-zahariev/php-aws-ses/zipball/4584427a358d8bf4aa8c2ce308afadc5f9601ab8",
+                "reference": "4584427a358d8bf4aa8c2ce308afadc5f9601ab8",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
+                "ext-simplexml": "*",
                 "php": ">=5.0.0"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.7",
+                "phpspec/prophecy": "~1.0",
+                "phpunit/php-code-coverage": "^6.0",
+                "phpunit/phpunit": "^7.1"
             },
             "type": "library",
             "autoload": {
@@ -32,7 +39,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD"
+                "MIT"
             ],
             "authors": [
                 {
@@ -50,7 +57,11 @@
                 "rest",
                 "ses"
             ],
-            "time": "2018-01-05T10:42:59+00:00"
+            "support": {
+                "issues": "https://github.com/daniel-zahariev/php-aws-ses/issues",
+                "source": "https://github.com/daniel-zahariev/php-aws-ses/tree/0.9.5"
+            },
+            "time": "2021-03-25T08:23:36+00:00"
         },
         {
             "name": "league/csv",
